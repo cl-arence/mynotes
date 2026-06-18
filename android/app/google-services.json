@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "681062609819",
+    "project_id": "mynotes-clarence",
+    "storage_bucket": "mynotes-clarence.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:681062609819:android:e2d4da666bbf21e6de673e",
+        "android_client_info": {
+          "package_name": "com.clavedemo.mynotes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbVtJu7S8DC70TKxfVmJ_ruk23qp6nByA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
