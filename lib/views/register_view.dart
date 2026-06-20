@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer' as devtools show log;
 import 'package:mynotes/constants/routes.dart';
+import 'package:mynotes/utilities/show_error_dialog.dart';
 
 class RegisterView extends StatefulWidget {
   
@@ -71,15 +72,22 @@ class _RegisterViewState extends State<RegisterView> {
                         email: email,
                         password: password,
                       );
+                      final user = FirebaseAuth.instance.currentUser;
+                      await user?.sendEmailVerification();
+                      Navigator.of(context).pushNamed(verifyEmailRoute);
                       devtools.log(userCredential.toString());
                     } on FirebaseAuthException catch (e) {
                       if (e.code == 'weak-password') {
-                        devtools.log('The password provided is too weak.');
+                        await showErrorDialog(context, 'The password provided is too weak.');
                       } else if (e.code == 'email-already-in-use') {
-                        devtools.log('The account already exists for that email.');
+                        await showErrorDialog(context, 'The account already exists for that email.');
                       } else if (e.code == 'invalid-email') {
-                        devtools.log('The email is invalid.');
+                        await showErrorDialog(context, 'The email is invalid.');
+                      } else {
+                        await showErrorDialog(context, 'Error: ${e.code}');
                       }
+                    } catch (e) {
+                      await showErrorDialog(context, e.toString(),);
                     }
                   },
                   child: const Text('Register'),
