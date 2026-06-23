@@ -4,6 +4,9 @@
 - The learner was at roughly the 18-hour mark on June 20, 2026.
 - The purpose of this project is to learn Flutter and prepare to build original apps in Visual Studio Code.
 - Git reference for reusable login and Firebase authentication code: commit `dd40333` (`step-10`) is the last commit before SQLite/local CRUD functionality was introduced. Commit `6a7a0fb` (`step-11`) begins the SQLite work.
+- Git reference for the completed local SQLite CRUD phase: commit `c986fbc` (`step-18`) is the clean checkpoint immediately before the course begins moving notes from local CRUD storage to Firebase. Preserve this reference for future explanations and reuse of the CRUD architecture.
+- As of after `step-18`, the course is transitioning from local SQLite CRUD notes to Firebase-backed notes. The learner expects to revisit the CRUD code later and may need a thorough conceptual explanation of how its database, cache, streams, models, and views work together.
+- Key Firebase transition noted by the learner: the Firestore implementation no longer needs the manually managed notes `StreamController` used by the SQLite CRUD service. Firestore supplies real-time data streams directly through snapshot listeners, reducing the need for a separate local cache-and-broadcast layer.
 - Treat the existing course code and architecture as intentional unless there is a clear bug.
 - Preserve the learner's work and the course's direction. Do not redesign or rewrite large sections unless explicitly requested.
 - Explain errors, fixes, and Flutter/Dart concepts in beginner-friendly language so the learner understands what changed and why.
