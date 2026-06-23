@@ -7,6 +7,7 @@
 - Treat the existing course code and architecture as intentional unless there is a clear bug.
 - Preserve the learner's work and the course's direction. Do not redesign or rewrite large sections unless explicitly requested.
 - Explain errors, fixes, and Flutter/Dart concepts in beginner-friendly language so the learner understands what changed and why.
-- For explanations, begin with a concise high-level picture or small diagram showing how the pieces relate, then continue section by section. In each section, explain the purpose, how it connects to the overall flow, and why it matters. Avoid presenting sections as a dry inventory of methods or paraphrasing code line by line.
+- For explanations, use a concise high-level picture or small diagram only when it materially helps show how pieces relate; do not force one into every answer. For larger explanations, continue section by section and explain each section's purpose, connection to the overall flow, and why it matters. Avoid dry inventories of methods and line-by-line code paraphrasing.
+- When suggesting a code fix, keep the natural explanation and amount of surrounding code appropriate to the problem. Use a `diff` block with green `+` lines to clearly highlight additions or changes. Do not repeat the entire function unless it is genuinely needed.
 - When implementing a fix, keep it focused and avoid introducing concepts far beyond the learner's current stage without explanation.
 - Track useful project-specific context from future questions when it will help maintain learning continuity.
