@@ -51,59 +51,61 @@ class _RegisterViewState extends State<RegisterView> {
         appBar: AppBar(title: const Text('Register')),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'Please enter your email and password to register.',
-                style: TextStyle(fontSize: 16),
-              ),
-              TextField(
-                controller: _email,
-                decoration: InputDecoration(
-                  hintText: 'Enter your email',
-                  labelText: 'Email',
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Please enter your email and password to register.',
+                  style: TextStyle(fontSize: 16),
                 ),
-                keyboardType: TextInputType.emailAddress,
-                autocorrect: false,
-                autofocus: true,
-                enableSuggestions: false,
-              ),
+                TextField(
+                  controller: _email,
+                  decoration: InputDecoration(
+                    hintText: 'Enter your email',
+                    labelText: 'Email',
+                  ),
+                  keyboardType: TextInputType.emailAddress,
+                  autocorrect: false,
+                  autofocus: true,
+                  enableSuggestions: false,
+                ),
 
-              TextField(
-                controller: _password,
-                decoration: InputDecoration(
-                  hintText: 'Enter your password',
-                  labelText: 'Password',
+                TextField(
+                  controller: _password,
+                  decoration: InputDecoration(
+                    hintText: 'Enter your password',
+                    labelText: 'Password',
+                  ),
+                  obscureText: true,
+                  autocorrect: false,
+                  enableSuggestions: false,
                 ),
-                obscureText: true,
-                autocorrect: false,
-                enableSuggestions: false,
-              ),
 
-              Center(
-                child: Column(
-                  children: [
-                    TextButton(
-                      onPressed: () async {
-                        final email = _email.text;
-                        final password = _password.text;
-                        context.read<AuthBloc>().add(
-                          AuthEventRegister(email, password),
-                        );
-                      },
-                      child: const Text('Register'),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        context.read<AuthBloc>().add(const AuthEventLogOut());
-                      },
-                      child: const Text('Already registered? Login here!'),
-                    ),
-                  ],
+                Center(
+                  child: Column(
+                    children: [
+                      TextButton(
+                        onPressed: () async {
+                          final email = _email.text;
+                          final password = _password.text;
+                          context.read<AuthBloc>().add(
+                            AuthEventRegister(email, password),
+                          );
+                        },
+                        child: const Text('Register'),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          context.read<AuthBloc>().add(const AuthEventLogOut());
+                        },
+                        child: const Text('Already registered? Login here!'),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
