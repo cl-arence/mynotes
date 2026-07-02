@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mynotes/services/auth/bloc/auth_bloc.dart';
 import 'package:mynotes/services/auth/bloc/auth_event.dart';
+import 'package:mynotes/extensions/buildcontext/loc.dart';
 
 class VerifyEmailView extends StatefulWidget {
   const VerifyEmailView({Key? key}) : super(key: key);
@@ -14,29 +15,24 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Verify Email')),
+      appBar: AppBar(title: Text(context.loc.verify_email)),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const Text(
-              'A verification email has been sent to your email address. Please verify your email.',
-            ),
-            const Text(
-              'If you have not received a verification email, press the button below.',
-            ),
+            Text(context.loc.verify_email_view_prompt),
             TextButton(
               onPressed: () {
                 context.read<AuthBloc>().add(
                   const AuthEventSendEmailVerification(),
                 );
               },
-              child: const Text('Send Email Verification'),
+              child: Text(context.loc.verify_email_send_email_verification),
             ),
             TextButton(
               onPressed: () async {
                 context.read<AuthBloc>().add(const AuthEventLogOut());
               },
-              child: const Text('Restart'),
+              child: Text(context.loc.restart),
             ),
           ],
         ),
