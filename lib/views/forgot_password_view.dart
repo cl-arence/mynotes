@@ -6,12 +6,13 @@ import 'package:mynotes/services/auth/bloc/auth_state.dart';
 import 'package:mynotes/utilities/dialogs/error_dialog.dart';
 import 'package:mynotes/utilities/dialogs/password_reset_email_sent_dialog.dart';
 import 'package:mynotes/extensions/buildcontext/loc.dart';
+import 'package:mynotes/views/auth/auth_screen.dart';
 
 class ForgotPasswordView extends StatefulWidget {
-  const ForgotPasswordView({Key? key}) : super(key: key);
+  const ForgotPasswordView({super.key});
 
   @override
-  _ForgotPasswordViewState createState() => _ForgotPasswordViewState();
+  State<ForgotPasswordView> createState() => _ForgotPasswordViewState();
 }
 
 class _ForgotPasswordViewState extends State<ForgotPasswordView> {
@@ -29,6 +30,11 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
     super.dispose();
   }
 
+  void _sendResetLink() {
+    final email = _controller.text.trim();
+    context.read<AuthBloc>().add(AuthEventForgotPassword(email: email));
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocListener<AuthBloc, AuthState>(
@@ -37,6 +43,9 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
           if (state.hasSentEmail) {
             _controller.clear();
             await showPasswordResetEmailSentDialog(context);
+            if (!context.mounted) {
+              return;
+            }
           }
           if (state.exception != null) {
             await showErrorDialog(
@@ -46,45 +55,38 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
           }
         }
       },
-      child: Scaffold(
-        appBar: AppBar(title: Text(context.loc.forgot_password)),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  context.loc.forgot_password_view_prompt,
-                  style: const TextStyle(fontSize: 16),
-                ),
-                const SizedBox(height: 8),
-                TextField(
-                  controller: _controller,
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    hintText: context.loc.email_text_field_placeholder,
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {
-                    final email = _controller.text;
-                    context.read<AuthBloc>().add(
-                      AuthEventForgotPassword(email: email),
-                    );
-                  },
-                  child: Text(context.loc.forgot_password_view_send_me_link),
-                ),
-                TextButton(
-                  onPressed: () {
-                    context.read<AuthBloc>().add(const AuthEventLogOut());
-                  },
-                  child: Text(context.loc.forgot_password_view_back_to_login),
-                ),
-              ],
+      child: AuthScreen(
+        title: context.loc.forgot_password,
+        subtitle: context.loc.forgot_password_view_prompt,
+        icon: Icons.mark_email_unread_outlined,
+        children: [
+          TextField(
+            controller: _controller,
+            keyboardType: TextInputType.emailAddress,
+            textInputAction: TextInputAction.done,
+            decoration: InputDecoration(
+              labelText: context.loc.email_text_field_placeholder,
+              prefixIcon: const Icon(Icons.alternate_email),
             ),
+            autocorrect: false,
+            enableSuggestions: false,
+            autofillHints: const [AutofillHints.email],
+            onSubmitted: (_) => _sendResetLink(),
           ),
-        ),
+          const SizedBox(height: 20),
+          FilledButton.icon(
+            onPressed: _sendResetLink,
+            icon: const Icon(Icons.send_outlined),
+            label: Text(context.loc.forgot_password_view_send_me_link),
+          ),
+          const SizedBox(height: 8),
+          TextButton(
+            onPressed: () {
+              context.read<AuthBloc>().add(const AuthEventLogOut());
+            },
+            child: Text(context.loc.forgot_password_view_back_to_login),
+          ),
+        ],
       ),
     );
   }

@@ -36,13 +36,71 @@ class AppLocalizationsSv extends AppLocalizations {
   String get verify_email => 'Verifera';
 
   @override
+  String get verify_email_short => 'Verifiera';
+
+  @override
   String get register => 'Registrera';
 
   @override
   String get restart => 'Börja om';
 
   @override
-  String get start_typing_your_note => 'Skriv din antäckning här';
+  String get notes_search_hint => 'Sök bland dina tankar';
+
+  @override
+  String get notes_new_note => 'Ny anteckning';
+
+  @override
+  String get notes_empty_title => 'Inga anteckningar än';
+
+  @override
+  String get notes_empty_body =>
+      'Tryck på Ny anteckning för att fånga din första tanke.';
+
+  @override
+  String get notes_no_search_results => 'Inga träffar';
+
+  @override
+  String get notes_no_search_results_body =>
+      'Prova en annan sökning eller rensa fältet.';
+
+  @override
+  String get notes_delete_tooltip => 'Radera anteckning';
+
+  @override
+  String get note_editor_saves_automatically => 'Sparas medan du skriver';
+
+  @override
+  String get verification_banner_title => 'Verifiera din mejladress när du kan';
+
+  @override
+  String get verification_banner_body =>
+      'Du kan fortsätta använda MindPad, men verifiering hjälper till att skydda ditt konto. Om mejlet saknas, kontrollera Skräppost, Spam, Kampanjer eller sök efter MindPad.';
+
+  @override
+  String get verification_banner_sent =>
+      'Verifieringsmejlet har skickats. Kontrollera inkorgen och skräpposten.';
+
+  @override
+  String get verification_banner_still_pending =>
+      'Inte verifierat än. Öppna länken i mejlet och tryck sedan på kontrollera igen.';
+
+  @override
+  String get verification_banner_verified =>
+      'Mejladressen är verifierad. Klart!';
+
+  @override
+  String get verification_banner_error =>
+      'Kunde inte uppdatera verifieringen just nu. Försök igen.';
+
+  @override
+  String get verification_banner_resend => 'Skicka igen';
+
+  @override
+  String get verification_banner_check => 'Jag har verifierat';
+
+  @override
+  String get start_typing_your_note => 'Skriv vad du tänker på...';
 
   @override
   String get delete_note_prompt =>
@@ -77,7 +135,7 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get login_view_prompt =>
-      'Logga in för att kunna se dina antäckningar!';
+      'Logga in för att hålla dina idéer nära och synkade.';
 
   @override
   String get login_view_forgot_password => 'Glömt lösenord?';
@@ -101,7 +159,7 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get forgot_password_view_prompt =>
-      'Om du har glömt ditt lösenord, mata in ditt mejladdress så kan vi skicka ett mejl till dig där du kan nollställa ditt lösenord!';
+      'Skriv din mejladress så skickar vi en återställningslänk till dig.';
 
   @override
   String get forgot_password_view_send_me_link => 'Skicka mejlet';
@@ -127,7 +185,7 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get register_view_prompt =>
-      'Mata in ditt mejladdress och ditt lösenord för att se dina antäckningar!';
+      'Skapa ett konto och börja samla anteckningar, idéer och planer.';
 
   @override
   String get register_view_already_registered =>
@@ -135,7 +193,7 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get verify_email_view_prompt =>
-      'Vi har skickat ett mejl till ditt mejladdress. Du behöver trycka på länken i mejlet för att verifiera ditt mejladdress. Om du inte har redan fått mejlet efter en stund, tryck på knappen nedan för att skicka ett till mejl!';
+      'Vi har skickat ett verifieringsmejl. Du kan fortsätta använda MindPad medan du verifierar. Om mejlet saknas, kontrollera skräppost eller sök efter MindPad.';
 
   @override
   String get verify_email_send_email_verification =>

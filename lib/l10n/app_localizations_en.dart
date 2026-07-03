@@ -36,13 +36,69 @@ class AppLocalizationsEn extends AppLocalizations {
   String get verify_email => 'Verify email';
 
   @override
+  String get verify_email_short => 'Verify';
+
+  @override
   String get register => 'Register';
 
   @override
   String get restart => 'Restart';
 
   @override
-  String get start_typing_your_note => 'Start typing your note';
+  String get notes_search_hint => 'Search your thoughts';
+
+  @override
+  String get notes_new_note => 'New note';
+
+  @override
+  String get notes_empty_title => 'No notes yet';
+
+  @override
+  String get notes_empty_body => 'Tap New note to catch your first thought.';
+
+  @override
+  String get notes_no_search_results => 'No matches';
+
+  @override
+  String get notes_no_search_results_body =>
+      'Try a different search or clear the field.';
+
+  @override
+  String get notes_delete_tooltip => 'Delete note';
+
+  @override
+  String get note_editor_saves_automatically => 'Saving as you write';
+
+  @override
+  String get verification_banner_title => 'Verify your email when you can';
+
+  @override
+  String get verification_banner_body =>
+      'You can keep using MindPad, but verification helps protect your account. If the email is missing, check Junk, Spam, Promotions, or search your inbox for MindPad.';
+
+  @override
+  String get verification_banner_sent =>
+      'Verification email sent. Check your inbox and junk folder.';
+
+  @override
+  String get verification_banner_still_pending =>
+      'Still not verified yet. Open the email link, then tap check again.';
+
+  @override
+  String get verification_banner_verified => 'Email verified. You\'re all set.';
+
+  @override
+  String get verification_banner_error =>
+      'Could not update verification right now. Please try again.';
+
+  @override
+  String get verification_banner_resend => 'Resend email';
+
+  @override
+  String get verification_banner_check => 'I verified';
+
+  @override
+  String get start_typing_your_note => 'Write what\'s on your mind...';
 
   @override
   String get delete_note_prompt => 'Are you sure you want to delete this note?';
@@ -75,7 +131,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get login_view_prompt =>
-      'Please log in to your account in order to interact with and create notes!';
+      'Sign in to keep your ideas close and synced.';
 
   @override
   String get login_view_forgot_password => 'I forgot my password';
@@ -99,7 +155,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get forgot_password_view_prompt =>
-      'If you forgot your password, simply enter your email and we will send you a password reset link.';
+      'Enter your email and we\'ll send a reset link so you can get back to your notes.';
 
   @override
   String get forgot_password_view_send_me_link => 'Send me password reset link';
@@ -125,7 +181,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get register_view_prompt =>
-      'Enter your email and password to see your notes!';
+      'Create your account and start collecting notes, sparks, and plans.';
 
   @override
   String get register_view_already_registered =>
@@ -133,7 +189,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get verify_email_view_prompt =>
-      'We\'ve sent you an email verification. Please open it to verify your account. If you haven\'t received a verification email yet, press the button below!';
+      'We\'ve sent you an email verification. You can keep using MindPad while you verify. If it is missing, check Junk, Spam, Promotions, or search for MindPad.';
 
   @override
   String get verify_email_send_email_verification => 'Send email verification';

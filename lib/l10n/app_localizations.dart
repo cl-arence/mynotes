@@ -152,6 +152,12 @@ abstract class AppLocalizations {
   /// **'Verify email'**
   String get verify_email;
 
+  /// No description provided for @verify_email_short.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify'**
+  String get verify_email_short;
+
   /// No description provided for @register.
   ///
   /// In en, this message translates to:
@@ -164,10 +170,106 @@ abstract class AppLocalizations {
   /// **'Restart'**
   String get restart;
 
+  /// No description provided for @notes_search_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search your thoughts'**
+  String get notes_search_hint;
+
+  /// No description provided for @notes_new_note.
+  ///
+  /// In en, this message translates to:
+  /// **'New note'**
+  String get notes_new_note;
+
+  /// No description provided for @notes_empty_title.
+  ///
+  /// In en, this message translates to:
+  /// **'No notes yet'**
+  String get notes_empty_title;
+
+  /// No description provided for @notes_empty_body.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap New note to catch your first thought.'**
+  String get notes_empty_body;
+
+  /// No description provided for @notes_no_search_results.
+  ///
+  /// In en, this message translates to:
+  /// **'No matches'**
+  String get notes_no_search_results;
+
+  /// No description provided for @notes_no_search_results_body.
+  ///
+  /// In en, this message translates to:
+  /// **'Try a different search or clear the field.'**
+  String get notes_no_search_results_body;
+
+  /// No description provided for @notes_delete_tooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete note'**
+  String get notes_delete_tooltip;
+
+  /// No description provided for @note_editor_saves_automatically.
+  ///
+  /// In en, this message translates to:
+  /// **'Saving as you write'**
+  String get note_editor_saves_automatically;
+
+  /// No description provided for @verification_banner_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify your email when you can'**
+  String get verification_banner_title;
+
+  /// No description provided for @verification_banner_body.
+  ///
+  /// In en, this message translates to:
+  /// **'You can keep using MindPad, but verification helps protect your account. If the email is missing, check Junk, Spam, Promotions, or search your inbox for MindPad.'**
+  String get verification_banner_body;
+
+  /// No description provided for @verification_banner_sent.
+  ///
+  /// In en, this message translates to:
+  /// **'Verification email sent. Check your inbox and junk folder.'**
+  String get verification_banner_sent;
+
+  /// No description provided for @verification_banner_still_pending.
+  ///
+  /// In en, this message translates to:
+  /// **'Still not verified yet. Open the email link, then tap check again.'**
+  String get verification_banner_still_pending;
+
+  /// No description provided for @verification_banner_verified.
+  ///
+  /// In en, this message translates to:
+  /// **'Email verified. You\'re all set.'**
+  String get verification_banner_verified;
+
+  /// No description provided for @verification_banner_error.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not update verification right now. Please try again.'**
+  String get verification_banner_error;
+
+  /// No description provided for @verification_banner_resend.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend email'**
+  String get verification_banner_resend;
+
+  /// No description provided for @verification_banner_check.
+  ///
+  /// In en, this message translates to:
+  /// **'I verified'**
+  String get verification_banner_check;
+
   /// No description provided for @start_typing_your_note.
   ///
   /// In en, this message translates to:
-  /// **'Start typing your note'**
+  /// **'Write what\'s on your mind...'**
   String get start_typing_your_note;
 
   /// No description provided for @delete_note_prompt.
@@ -227,7 +329,7 @@ abstract class AppLocalizations {
   /// No description provided for @login_view_prompt.
   ///
   /// In en, this message translates to:
-  /// **'Please log in to your account in order to interact with and create notes!'**
+  /// **'Sign in to keep your ideas close and synced.'**
   String get login_view_prompt;
 
   /// No description provided for @login_view_forgot_password.
@@ -269,7 +371,7 @@ abstract class AppLocalizations {
   /// No description provided for @forgot_password_view_prompt.
   ///
   /// In en, this message translates to:
-  /// **'If you forgot your password, simply enter your email and we will send you a password reset link.'**
+  /// **'Enter your email and we\'ll send a reset link so you can get back to your notes.'**
   String get forgot_password_view_prompt;
 
   /// No description provided for @forgot_password_view_send_me_link.
@@ -311,7 +413,7 @@ abstract class AppLocalizations {
   /// No description provided for @register_view_prompt.
   ///
   /// In en, this message translates to:
-  /// **'Enter your email and password to see your notes!'**
+  /// **'Create your account and start collecting notes, sparks, and plans.'**
   String get register_view_prompt;
 
   /// No description provided for @register_view_already_registered.
@@ -323,7 +425,7 @@ abstract class AppLocalizations {
   /// No description provided for @verify_email_view_prompt.
   ///
   /// In en, this message translates to:
-  /// **'We\'ve sent you an email verification. Please open it to verify your account. If you haven\'t received a verification email yet, press the button below!'**
+  /// **'We\'ve sent you an email verification. You can keep using MindPad while you verify. If it is missing, check Junk, Spam, Promotions, or search for MindPad.'**
   String get verify_email_view_prompt;
 
   /// No description provided for @verify_email_send_email_verification.

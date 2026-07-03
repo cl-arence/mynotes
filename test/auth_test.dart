@@ -115,6 +115,7 @@ class MockAuthUser implements AuthProvider {
       id: 'my_id',
       isEmailVerified: false,
       email: 'foo@bar.com',
+      isAnonymous: false,
     );
     _user = user;
     return Future.value(user);
@@ -137,8 +138,15 @@ class MockAuthUser implements AuthProvider {
       id: 'my_id',
       isEmailVerified: true,
       email: 'foo@bar.com',
+      isAnonymous: false,
     );
     _user = newUser;
+  }
+
+  @override
+  Future<void> refreshCurrentUser() async {
+    if (!isInitialized) throw NotInitializedException();
+    if (_user == null) throw UserNotFoundAuthException();
   }
 
   @override

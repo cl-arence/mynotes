@@ -13,6 +13,10 @@ class AuthEventSendEmailVerification extends AuthEvent {
   const AuthEventSendEmailVerification();
 }
 
+class AuthEventRefreshCurrentUser extends AuthEvent {
+  const AuthEventRefreshCurrentUser();
+}
+
 class AuthEventLogIn extends AuthEvent {
   final String email;
   final String password;

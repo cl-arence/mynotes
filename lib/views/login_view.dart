@@ -6,9 +6,10 @@ import 'package:mynotes/services/auth/bloc/auth_event.dart';
 import 'package:mynotes/services/auth/bloc/auth_state.dart';
 import 'package:mynotes/utilities/dialogs/error_dialog.dart';
 import 'package:mynotes/extensions/buildcontext/loc.dart';
+import 'package:mynotes/views/auth/auth_screen.dart';
 
 class LoginView extends StatefulWidget {
-  const LoginView({Key? key}) : super(key: key);
+  const LoginView({super.key});
 
   @override
   State<LoginView> createState() => _LoginViewState();
@@ -26,10 +27,16 @@ class _LoginViewState extends State<LoginView> {
   }
 
   @override
-  dispose() {
+  void dispose() {
     _email.dispose();
     _password.dispose();
     super.dispose();
+  }
+
+  void _logIn() {
+    final email = _email.text.trim();
+    final password = _password.text;
+    context.read<AuthBloc>().add(AuthEventLogIn(email, password));
   }
 
   @override
@@ -52,68 +59,57 @@ class _LoginViewState extends State<LoginView> {
           }
         }
       },
-      child: Scaffold(
-        appBar: AppBar(title: Text(context.loc.login)),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Text(
-                  context.loc.login_view_prompt,
-                  style: const TextStyle(fontSize: 16),
-                ),
-                TextField(
-                  controller: _email,
-                  decoration: InputDecoration(
-                    hintText: context.loc.email_text_field_placeholder,
-                  ),
-                  keyboardType: TextInputType.emailAddress,
-                  autocorrect: false,
-                  enableSuggestions: false,
-                ),
-
-                TextField(
-                  controller: _password,
-                  decoration: InputDecoration(
-                    hintText: context.loc.password_text_field_placeholder,
-                  ),
-                  obscureText: true,
-                  autocorrect: false,
-                  enableSuggestions: false,
-                ),
-
-                TextButton(
-                  onPressed: () async {
-                    final email = _email.text;
-                    final password = _password.text;
-                    context.read<AuthBloc>().add(
-                      AuthEventLogIn(email, password),
-                    );
-                  },
-                  child: Text(context.loc.login),
-                ),
-
-                TextButton(
-                  onPressed: () {
-                    context.read<AuthBloc>().add(
-                      const AuthEventShouldRegister(),
-                    );
-                  },
-                  child: Text(context.loc.login_view_not_registered_yet),
-                ),
-                TextButton(
-                  onPressed: () {
-                    context.read<AuthBloc>().add(
-                      const AuthEventForgotPassword(),
-                    );
-                  },
-                  child: Text(context.loc.login_view_forgot_password),
-                ),
-              ],
+      child: AuthScreen(
+        title: context.loc.login,
+        subtitle: context.loc.login_view_prompt,
+        icon: Icons.lock_outline,
+        children: [
+          TextField(
+            controller: _email,
+            decoration: InputDecoration(
+              labelText: context.loc.email_text_field_placeholder,
+              prefixIcon: const Icon(Icons.alternate_email),
             ),
+            keyboardType: TextInputType.emailAddress,
+            textInputAction: TextInputAction.next,
+            autocorrect: false,
+            enableSuggestions: false,
+            autofillHints: const [AutofillHints.email],
           ),
-        ),
+          const SizedBox(height: 12),
+          TextField(
+            controller: _password,
+            decoration: InputDecoration(
+              labelText: context.loc.password_text_field_placeholder,
+              prefixIcon: const Icon(Icons.lock_outline),
+            ),
+            obscureText: true,
+            autocorrect: false,
+            enableSuggestions: false,
+            textInputAction: TextInputAction.done,
+            autofillHints: const [AutofillHints.password],
+            onSubmitted: (_) => _logIn(),
+          ),
+          const SizedBox(height: 20),
+          FilledButton.icon(
+            onPressed: _logIn,
+            icon: const Icon(Icons.login),
+            label: Text(context.loc.login),
+          ),
+          const SizedBox(height: 8),
+          TextButton(
+            onPressed: () {
+              context.read<AuthBloc>().add(const AuthEventShouldRegister());
+            },
+            child: Text(context.loc.login_view_not_registered_yet),
+          ),
+          TextButton(
+            onPressed: () {
+              context.read<AuthBloc>().add(const AuthEventForgotPassword());
+            },
+            child: Text(context.loc.login_view_forgot_password),
+          ),
+        ],
       ),
     );
   }
